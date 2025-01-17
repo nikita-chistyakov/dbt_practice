@@ -1,6 +1,6 @@
 # dbt_practice
 
-### **1. Set Up Your Environment**
+### **1. Set up my Environment**
 1. **Install dbt**:
    - Use pip to install dbt:
      ```bash
@@ -10,7 +10,7 @@
      pip install dbt-core dbt-postgres
      ```
 
-2. **Set Up Database**:
+2. **Set up Database**:
    - Create access to a database to run and test dbt models (Snowflake).
    - Need database credentials (host, port, database name, user, password).
 
