@@ -1,0 +1,63 @@
+Modify the `models/model_properties.yml` file, write out the documentation, and start the dbt documentation server:
+
+---
+
+### **Step 1: Modify `model_properties.yml`**
+Add the description to the `taxi_rides_raw` model as follows:
+
+**File: `models/model_properties.yml`**
+```yaml
+version: 2
+
+models:
+  - name: taxi_rides_raw
+    description: Initial import of the NYC Yellow Taxi trip data from Parquet source
+    access: public
+```
+
+---
+
+### **Step 2: Write Out the Documentation**
+Use the following command to generate the documentation artifacts:
+```bash
+dbt docs generate
+```
+
+This command:
+- Parses your project.
+- Creates the documentation in the `target` directory (e.g., `target/catalog.json` and `target/index.html`).
+
+---
+
+### **Step 3: Start the Documentation Server**
+Run the following command to start the dbt documentation server:
+```bash
+dbt docs serve
+```
+
+- This will start a local web server and provide a URL (e.g., `http://localhost:8080`) where you can view the documentation in your browser.
+
+---
+
+### **Step 4: Stop the Documentation Server**
+Once you’re done serving the documentation, press **`Ctrl+C`** in the terminal to stop the server.
+
+---
+
+### **Commands Recap**
+1. **Generate Documentation**:
+   ```bash
+   dbt docs generate
+   ```
+2. **Serve Documentation**:
+   ```bash
+   dbt docs serve
+   ```
+3. **Stop the Server**:
+   Press `Ctrl+C`.
+
+---
+
+### **Notes**
+- The description will now be visible under the `taxi_rides_raw` model in the documentation interface.
+- Ensure the `description` field is updated with clear, concise metadata to make the documentation useful for other users.
