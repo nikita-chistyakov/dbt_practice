@@ -1,0 +1,33 @@
+Key Built-in Tests:
+
+Tests	            Description:
+- 'unique'	        Ensures that each value in the column is unique (no duplicates).
+- 'not_null'	        Ensures that there are no null values in the column.
+- 'relationships'	Validates foreign key relationships between models.
+- 'accepted_values'	Ensures that the column contains only specified allowed values.
+
+ex:
+  models:
+  - name: customers
+    columns:
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
+      - name: customer_status
+        tests:
+          - accepted_values:
+              values: ['active', 'inactive', 'pending']
+  - name: orders
+    columns:
+      - name: customer_id
+        tests:
+          - relationships:
+              to: ref('customers')
+              field: customer_id
+
+Custom Test	        Purpose:
+'no_negative_values'	Ensures that numeric columns have no negative values.
+'max_length'	        Validates that text columns do not exceed a certain length.
+'check_date_range'	Ensures that date columns fall within a specified range.
+'percent_nulls_allowed'	Allows a specific percentage of null values in a column.
