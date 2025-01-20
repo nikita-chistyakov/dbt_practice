@@ -1,0 +1,94 @@
+A **reusable test** in dbt allows you to define a test once and apply it across multiple models or columns. 
+This improves consistency and maintainability in your project.
+
+Here’s an example of creating and applying a **reusable test** in dbt:
+
+---
+
+### **1. Create the Reusable Test**
+Reusable tests are written as SQL files and stored in the `tests/` directory of your dbt project. Below is an example of a reusable test to check for **no negative values** in a column.
+
+**File:** `tests/no_negative_values.sql`
+```sql
+-- Ensure there are no negative values in the specified column
+select *
+from {{ ref(model) }}
+where {{ column_name }} < 0
+```
+
+---
+
+### **2. Define the Test in `schema.yml`**
+You can apply this test to specific columns across models by referencing it in your `schema.yml` file.
+
+**File:** `models/schema.yml`
+```yaml
+models:
+  - name: orders
+    columns:
+      - name: total_price
+        description: "The total price of an order."
+        tests:
+          - no_negative_values:
+              column_name: total_price
+      - name: discount_amount
+        description: "The discount applied to an order."
+        tests:
+          - no_negative_values:
+              column_name: discount_amount
+```
+
+---
+
+### **3. Key Points About the Test**
+1. **Parameterization**:
+   - The test uses `{{ column_name }}` and `{{ ref(model) }}` to dynamically apply the logic to the specified column and model.
+
+2. **Versatility**:
+   - This single reusable test can validate multiple columns in different models.
+
+3. **Results**:
+   - dbt will fail the test if any row in the model has a negative value in the specified column.
+
+---
+
+### **4. Running the Test**
+Run all tests, including your reusable ones, with:
+```bash
+dbt test
+```
+
+To run the test for a specific model:
+```bash
+dbt test --select orders
+```
+
+---
+
+### **5. Example Output**
+If the test fails, dbt will display the rows that violate the condition, helping you identify and resolve issues.
+
+---
+
+### Other Reusable Test Ideas:
+- **Check for Unique and Non-Null Values**:
+  ```sql
+  -- tests/unique_not_null.sql
+  select *
+  from {{ ref(model) }}
+  where {{ column_name }} is null
+     or {{ column_name }} in (
+         select {{ column_name }}
+         from {{ ref(model) }}
+         group by {{ column_name }}
+         having count(*) > 1
+     )
+  ```
+
+- **Check Date Ranges**:
+  ```sql
+  -- tests/date_range.sql
+  select *
+  from {{ ref(model) }}
+  where {{ column_name }} < '2000-01-01'
+```
