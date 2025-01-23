@@ -26,11 +26,11 @@
      ```
      dbt_test_project/
      ├── dbt_project.yml
-     ├── models/
-     ├── snapshots/
-     ├── tests/
+     ├── models/ (**handle the transformation of data (usually from sources / seeds) for downstream users)
+     ├── snapshots/ (**used to track changes within datasets)
+     ├── tests/ (**can validata 'sources', 'seeds', 'models', and even 'snapshots')
      ├── macros/
-     └── seeds/
+     └── seeds/ (**feed initial data to dbt)
      ```
 
 2. **Navigate to the Project Directory**:
