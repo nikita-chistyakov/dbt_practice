@@ -1,6 +1,6 @@
 # dbt_practice
 
-### **1. Set up my Environment**
+### **1. Set up my environment**
 1. **Install dbt**:
    - Use pip to install dbt:
      ```bash
@@ -10,13 +10,13 @@
      pip install dbt-core dbt-postgres
      ```
 
-2. **Set up Database**:
+2. **Set up database**:
    - Create access to a database to run and test dbt models (Snowflake).
    - Need database credentials (host, port, database name, user, password).
 
 ---
 
-### **2. Initialize a dbt Project**
+### **2. Initialize a dbt project**
 1. **Create a New dbt Project**:
    - Run the following command to create a new dbt project:
      ```bash
@@ -33,12 +33,12 @@
      └── seeds/ (**feed initial data to dbt)
      ```
 
-2. **Navigate to the Project Directory**:
+2. **Navigate to the project directory**:
    ```bash
    cd dbt_test_project
    ```
 
-3. **Set Up the yet another mark-up language with `profiles.yml`**:
+3. **Set up the yet another mark-up language with `profiles.yml`**:
    - Create a `profiles.yml` file in `~/.dbt/` (home directory) or update the existing one with the database connection details:
      ```yaml
      dbt_test_project:
@@ -56,8 +56,8 @@
 
 ---
 
-### **3. Add Models and Tests**
-1. **Create a Basic Model**:
+### **3. Add models and tests**
+1. **Create a basic model**:
    - Add a SQL file in the `models/` folder:
      `models/example_model.sql`
      ```sql
@@ -69,7 +69,7 @@
      GROUP BY id, name
      ```
 
-2. **Define a Schema File for Testing**:
+2. **Define a schema file for testing**:
    - Add a `schema.yml` file in the `models/` folder:
      `models/schema.yml`
      ```yaml
@@ -87,7 +87,7 @@
              description: "The total number of orders per customer."
      ```
 
-3. **Run Tests**:
+3. **Run tests**:
    - Test your model using:
      ```bash
      dbt test
@@ -95,11 +95,11 @@
 
 ---
 
-### **4. Initialize a GitHub Repository**
+### **4. Initialize a GitHub repository**
 1. **Create a New Repository**:
    - Go to [GitHub](https://github.com) and create a new repository (`dbt_practice`).
 
-2. **Initialize Git in the Project Directory**:
+2. **Initialize Git in the project directory**:
    ```bash
    git init
    git add .
@@ -120,8 +120,8 @@
 
 ---
 
-### **5. Run and Practice**
-1. **Run the dbt Project**:
+### **5. Run and practice**
+1. **Run the dbt project**:
    - Execute the models:
      ```bash
      dbt run
