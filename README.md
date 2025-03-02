@@ -88,7 +88,7 @@
      ```
 
 3. **Run tests**:
-   - Test your model using:
+   - Testing my model using:
      ```bash
      dbt test
      ```
@@ -141,5 +141,5 @@
 ---
 
 ### **6. Share and Collaborate**
-- Share the GitHub repository link with others for feedback or collaboration.  
-- Add a `README.md` file to explain the purpose of your project and how to use it.  
+- Sharing the GitHub repository link with others allows for feedback or collaboration.  
+- Adding a `README.md` file explains the purpose of my project and a high-level overview on how to use it.  
