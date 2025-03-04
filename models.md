@@ -1,6 +1,6 @@
-#dbt models#
+# dbt models
 
-Transforming data, the 'T' in ELT. 
+Transforming data represented as the 'T' in ELT. 
 
 When you execute 'dbt run', you are running a model that will transform your data without that data ever leaving your warehouse.
 
