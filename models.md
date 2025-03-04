@@ -12,4 +12,4 @@ Models will be written and rewritten as needs evolve and your organization finds
 
 SQL is the language most dbt users will utilize, but it is not the only one for building models. Starting in version 1.3, dbt Core and dbt Cloud support Python models. 
 
-Python models are useful for training or deploying data science models, complex transformations, or where a specific Python package meets a need — such as using the dateutil library to parse dates.
+Python models are useful for training or deploying data science models, complex transformations, or where a specific Python package meets a need — such as using the dateutil library to parse dates. 
